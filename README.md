@@ -6,7 +6,7 @@ install a mongodb database
 
 copy and paste us-census.db to %your_workspace_dir%\tablesearch
 
-open a terminal in %mongodb_dir%\...\bin
+open a terminal at %mongodb_dir%\ ...\bin
 
 run mongod --dbpath %your_workspace_dir%\tablesearch\data
 

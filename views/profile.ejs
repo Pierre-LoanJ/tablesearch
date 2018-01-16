@@ -1,0 +1,187 @@
+<!-- views/profile.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instsearch.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch-theme-algolia.min.css">
+
+     <link rel="stylesheet" href="../css/uploader.css">
+     <link rel="stylesheet" href="../css/profile.css">
+    <style>
+        body        { padding-top:80px; word-wrap:break-word; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1><span class="fa fa-user"></span> Hey! It's been a while !</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+	    <div class="profile-sidebar">
+			
+  			<div class="profile-userpic">
+  			<!--"http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg"-->
+  				<img src="uploads/profile_<%= userId %>.jpg" id="profilePic" class="img-responsive" alt="">
+  			</div>
+  			
+  			<div class="profile-usertitle">
+  				<div class="profile-usertitle-name">
+  					<%= user.local.name %>
+  				</div>
+  				<div class="profile-usertitle-email">
+  					<%= user.local.email %>
+  				</div>
+  				<div class="profile-usertitle-job">
+  					<%= user.local.job %>
+  				</div>
+  			</div>
+  			
+  			<div class="profile-userbuttons">
+  				<button type="button" class="btn btn-warning btn-sm changeProfilePic">Change Photo</button>
+  				<!--button type="button" class="btn btn-success btn-sm">Follow</button-->
+  				<button type="button" class="btn btn-danger btn-sm">Message</button>
+  			</div>
+  			
+  			<div class="profile-usermenu">
+  				<ul class="nav">
+  					<li class="overview active">
+  						<a href="#">
+  						<i class="glyphicon glyphicon-home"></i>
+  						Overview </a>
+  					</li>
+  					<li class="settings">
+  						<a href="#">
+  						<i id="settings" class="glyphicon glyphicon-user"></i>
+  						Account Settings </a>
+  					</li>
+  					<li>
+  						<a href="#" target="">
+  						<i class="glyphicon glyphicon-ok tasks"></i>
+  						Tasks </a>
+  					</li>
+  					<li>
+  						<a href="#">
+  						<i class="glyphicon glyphicon-flag help"></i>
+  						Help </a>
+  					</li>
+  				</ul>
+  			</div>
+		  </div>
+       
+      <div class="userContent">
+          <div class="overview-bloc">
+              <h3><span class="fa fa-check"></span> Profile infos</h3>
+                  <p>
+                      <!--strong>id</strong>: <%= user._id %><br-->
+                      <strong>email</strong>: <%= user.local.email %><br>
+                      <!--strong>password</strong>: <%= user.local.password %><br-->
+                      <strong>name</strong>: <%= user.local.name %><br>
+                      <strong>job</strong>: <%= user.local.job %><br>
+                  </p>
+          </div>
+          <div class="settings-bloc">
+            <form action="/profile/infos/update" method="post">
+                    <div class="overview-form">
+                        <label>your name</label>
+                        <input type="text" class="form-control" name="name">
+                    </div>
+                    <div class="overview-form">
+                        <label>your job</label>
+                        <input type="text" class="form-control" name="job">
+                    </div>
+
+                    <button type="submit" class="btn btn-warning btn-mi">save</button>
+                </form>
+          </div>
+          <select id="columnParam" class="btn btn-default dropdown-toggle"  aria-haspopup="true" aria-expanded="true">
+                <option value="">Select an option</option>
+                <option value="age">age</option>
+                <option value="class of worker">class of worker</option>
+                <option value="industry code">industry code</option>
+                <option value="occupation code">occupation code</option>
+                <option value="education">education</option>
+                <option value="wage per hour">wage per hour</option>
+                <option value="last education">last education</option>
+                <option value="marital status">marital status</option>
+                <option value="major industry code">major industry code</option>
+                <option value="mace">mace</option>
+                <option value="hispanice">hispanice</option>
+                <option value="sex">sex</option>
+                <option value="member of labor">member of labor</option>
+                <option value="reason for unemployment">reason for unemployment</option>
+                <option value="full time">full time</option>
+                <option value="capital gain">capital gain</option>
+                <option value="capital loss">capital loss</option>
+                <option value="dividends">dividends</option>
+                <option value="income tax liability">income tax liability</option>
+                <option value="previous residence region">previous residence region</option>
+                <option value="previous residence state">previous residence state</option>
+                <option value="household-with-family">household-with-family</option>
+                <option value="household-simple">household-simple</option>
+                <option value="weight">weight</option>
+                <option value="msa-change">msa-change</option>
+                <option value="reg-change">reg-change</option>
+                <option value="within-reg-change">within-reg-change</option>
+                <option value="lived-here">lived-here</option>
+                <option value="migration prev res in sunbelt">migration prev res in sunbelt</option>
+                <option value="nums persons worked for employer">nums persons worked for employer</option>
+                <option value="family members under 118">family members under 118</option>
+                <option value="father birth country">father birth country</option>
+                <option value="mother birth country">mother birth country</option>
+                <option value="birth country">birth country</option>
+                <option value="citizenship">citizenship</option>
+                <option value="own business or self employed">own business or self employed</option>
+                <option value="fill questionnaire for veteran's admin">fill questionnaire for veteran's admin</option>
+                <option value="veterans benefits">veterans benefits</option>
+                <option value="weeks worked in year">weeks worked in year</option>
+                <option value="year">year</option>
+                <option value="salary range">salary range</option>
+            </select>
+            <div id="search-box"></div>
+            <div id="refinement-list"></div>
+            <div id="pagination"></div>
+      </div>
+        <div class="dataContent"></div>
+          <div id="hits"></div>
+          
+    </div>        
+</div>
+<div class="modal fade" id="photoUploader" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	    <!--div class="modal-content"-->
+	        <!--div class="modal-header"-->
+    			<div class="row">
+      				<div class="col-xs-12">
+      					<div class="panel panel-default">
+      				  		<div class="panel-body">
+      				    		<span class="glyphicon glyphicon-cloud-upload"></span>
+      				   				<h2>File Uploader</h2>
+      				    			<h4>coligo.io</h4>
+      				    			<div class="progress">
+      				      				<div class="progress-bar" role="progressbar">
+      				      				</div>
+      				    			</div>
+      				    		<button class="btn btn-lg upload-btn" type="button">Upload File</button>
+      				  		</div>
+      					</div>
+      				</div>
+    			</div>
+			
+	    
+	  </div>
+  </div>
+<input id="upload-input" type="file" name="uploads[]" multiple="multiple"></br>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.4.1/dist/instantsearch.min.js"></script>
+	<script type="text/javascript" src="../js/profile.js"></script>
+	<script type="text/javascript" src="../js/uploader.js"></script>
+</body>
+</html>

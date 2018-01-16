@@ -4,10 +4,12 @@ clone this repo
 
 install a mongodb database
 
-open a cmd in %mongodb_dr%\...\bin
+copy and paste us-census.db to %your_workspace_dir%\tablesearch
 
-run mongod --dbpath %your_workspace%\tablesearch\data
+open a terminal in %mongodb_dir%\...\bin
 
-open a bash at your_workspace\tablesearch
+run mongod --dbpath %your_workspace_dir%\tablesearch\data
+
+open a terminal at %your_workspace_dir%\tablesearch
 
 run node server

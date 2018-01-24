@@ -8,6 +8,8 @@ copy and paste us-census.db to %your_workspace_dir%\tablesearch
 
 open a terminal at %mongodb_dir%\ ...\bin
 
+create an empty folder called data at \tablesearch\
+
 run mongod --dbpath %your_workspace_dir%\tablesearch\data
 
 open a terminal at %your_workspace_dir%\tablesearch

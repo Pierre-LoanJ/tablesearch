@@ -2,16 +2,14 @@
 
 clone this repo
 
-install a mongodb database
+create an empty folder called data at \tablesearch\
 
 copy and paste us-census.db to %your_workspace_dir%\tablesearch
 
-open a terminal at %mongodb_dir%\ ...\bin
+run "npm install" from your shell
 
-create an empty folder called data at \tablesearch\
+install a mongodb database
 
-run mongod --dbpath %your_workspace_dir%\tablesearch\data
+open a terminal at %mongodb_dir%\ ...\bin and run "mongod --dbpath %your_workspace_dir%\tablesearch\data"
 
-open a terminal at %your_workspace_dir%\tablesearch
-
-run node server
+open a terminal at %your_workspace_dir%\tablesearch and run "node server"

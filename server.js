@@ -86,7 +86,7 @@ for (var i = 5; i < 21; i++) {
 	  	var datas = eval(data.toString());
 		
 		const algoliasearch = require('algoliasearch');
-		var client = algoliasearch("CHVVKKXO9L", "9bfbf736a7bf0ae75f04c3b3aaae91b4");
+		var client = algoliasearch("your_Application_ID", "your_API_Key");
 		var index = client.initIndex('dummy');
 
 		//console.log(datas);
